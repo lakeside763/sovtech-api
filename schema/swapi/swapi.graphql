@@ -1,0 +1,50 @@
+type Person {
+  "Unique identity map from the list of the people"
+  id: Int
+  "Name of the person"
+  name: String
+  "Height of the person"
+  height: String
+  "Mass of the person"
+  mass: String
+  "Hair color of the person"
+  hair_color: String
+  "Skin color of the person"
+  skin_color: String
+  "Eye color of the person"
+  eye_color: String
+  "Birth year of the person"
+  birth_year: String
+  "Gender of the person"
+  gender: String
+  "Homeworld url address of the person"
+  homeworld: String
+  "Url address to the person profile"
+  url: String
+}
+
+type GetPeopleListResponseData {
+  "Total number count of the people list"
+  count: Int
+  "Pagination next link"
+  next: String
+  "Pagination previous link"
+  previous: String
+  "Array of the collection of an Person"
+  people: [Person]
+}
+
+input GetPeopleListInput {
+  "Pagination number of set of people list query, is optional"
+  page: Int
+  "Search from form input for list or specific person, is optional"
+  search: String
+}
+
+
+type Query {
+  "A query to fetch the list of people optionally by page or search parameter"
+  getPeopleList(input: GetPeopleListInput): GetPeopleListResponseData
+  "A query to fetch the details of person by the person ID"
+  getPersonById(id: Int!): Person
+}
